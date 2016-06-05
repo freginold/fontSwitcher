@@ -1,13 +1,4 @@
-
-/*  fontSwitcher v1.4 improvements:
-          - added support for generic fonts
-    fontSwitcher v1.3 improvements:
-          - added support for fallback font(s)
-    fontSwitcher v1.2, Jan 2016 improvements:
-          - supports multiple Google fonts at once
-    fontSwitcher v1.1, Jan 2016 improvements:
-          - auto-creates <link> element if not already present
-*/
+// fontSwitcher v1.4
 
 function fontSwitcher(newFontName, elementClass) {  
 
