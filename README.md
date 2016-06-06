@@ -1,7 +1,7 @@
 # fontSwitcher
 Dynamically add Google web fonts and apply them on the fly.  Create or add font stacks with a single line of JavaScript.
 
-
+### Usage:
 To use fontSwitcher, include this line between your `<head>` and `</head>` tags, or at the end of your `<body>` tag:
 
 `<script src="https://raw.githubusercontent.com/freginold/fontSwitcher/master/fontSwitcher.js"></script>`
