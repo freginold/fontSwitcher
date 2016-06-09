@@ -1,40 +1,4 @@
-
-  /*  fontSwitcher v1.4, June 2016
-        improvements:
-          - added support for generic fonts (main & fallback)
-          - skips Google call for generic fonts
-      fontSwitcher v1.3, May 2016
-        improvements:
-          - added support for fallback font(s)
-          - cleaned up code a little bit
-      fontSwitcher v1.2, Jan 2016
-        improvements:
-          - supports multiple Google fonts at once with different class names
-          - provide online link to source file instead of having to copy/paste code
-      fontSwitcher v1.1, Jan 2016
-        improvements:
-          - auto-creates <link> element if not already present so user doesn't have to
-      fontSwitcher v1.0, Jan 2016
-      
-        to do:
-          - add support for font styles & effects (as optional parameters?)
-          - add automatic capitalization (first letter of each word)?
-          - check if requested font is a Google Font; if a native/loaded font don't call
-          - check if font loaded, if it didn't, notify? - at least revert back to current font
-          - include check to make sure requested font isn't same as current font
-          - change way it applies font, so applies to whole class at once
-          - make npm package
-          - bitBucket / gitHub?
-          - add support for 'sans serif' -- change to 'sans-serif'
- 
-        js file - http://codepen.io/freginold/pen/vLJewY.js
-        Blogger - http://tech-in-check.blogspot.com/p/fontswitcher-google-font.html
-  */
-  //v1.0 = 1 KB, v1.1 = 2 KB, v1.2 = 2 KB, v1.3 = 4KB, v1.3.min = 1 KB, v1.4 = 5 KB, current WIP = 5 KB
-  //set some made-up/new element as serif, apply newFontName, check to see if it's serif or newFontName, if new one, font is already
-  //there/loaded -- won't work b/c even if not valid font, still applies it as the attribute
-  //include check in case requested font is same as test font (serif, cursive, etc.)
-  //can check to see if current font is same as selected font (if set by CSS won't show, but will show if set by JS)
+// fontSwitcher v1.4
 
 function fontSwitcher(newFontName, elementClass) {  
 
