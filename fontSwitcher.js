@@ -1,16 +1,18 @@
-// fontSwitcher v1.4
+// fontSwitcher v2.0
 
-function fontSwitcher(newFontName, elementClass) {  
+function fontSwitcher(fontInput, classInput) {  
 
-  function checkLink() {
-    //check to see if link element for this class has already been built
-      if (!(document.getElementById(linkName))) {
-        //if fontSwitcher link for this class doesn't exist, create it
+  function checkLink(thisFont) {
+    //checks to see if <link> element for this font has already been built; if not, builds it
+    var linkName="fSg_"+thisFont;
+    if (!(document.getElementById(linkName))) {
+        //if fontSwitcher link for this font doesn't exist, create it
         var linkElement=document.createElement("link");
         linkElement.id=linkName;
         linkElement.rel="stylesheet";
         linkElement.type="text/css";
         document.head.appendChild(linkElement);
+        document.getElementById(linkName).href=makeGoogleURL(thisFont);
     }
     else if (!((document.getElementById(linkName).rel=="stylesheet") &&
           (document.getElementById(linkName).type=="text/css"))) {
@@ -19,73 +21,107 @@ function fontSwitcher(newFontName, elementClass) {
         }
   }
 
-  function makeURL(fontName) {
-    //create URL to grab the Google font
-    newFontURL="https://fonts.googleapis.com/css?family=";
-    for (var i=0;i<(fontName.length);i++) {
-      if (fontName.charAt(i)==" ") {
-        newFontURL=newFontURL+"+";
-      }
-      else {
-        newFontURL=newFontURL+fontName.charAt(i);
-      }
+  function checkScript(thisFont) {
+    //checks to see if <script> element for this font has already been built; if not, builds it
+    var scriptName="fSa_"+thisFont;
+    if (!(document.getElementById(scriptName))) {
+        //if fontSwitcher script element for this font doesn't exist, create it
+        var scriptElement=document.createElement("script");
+        scriptElement.id=scriptName;
+        scriptElement.type="text/javascript";
+        document.head.appendChild(scriptElement);
+        document.getElementById(scriptName).src=makeAdobeURL(thisFont);
     }
+  }
+  
+  function makeGoogleURL(fontName) {
+    //create URL to grab Google font
+    var newFontURL="https://fonts.googleapis.com/css?family="+addReplChar(fontName, '+');
     return newFontURL;
   }
-
-  function checkFallbacks() {
-    //check if any fallback fonts specified
-    if (fontArgs.length<=2) {
-        return;
+  
+  function makeAdobeURL(fontName) {
+    //create URL to grab Adobe font
+    //add "http:" for local development
+    var newFontURL="//use.edgefonts.net/"+addReplChar(fontName, '-')+".js";
+    return newFontURL;
+  }
+  
+  function addReplChar(fName, replChar) {
+    //replace space w/ + or - for URL
+    var urlString='';
+    for (var i=0;i<(fName.length);i++) {
+      if (fName.charAt(i)==" ") {
+        urlString=urlString+replChar;
+      }
+      else {
+        urlString=urlString+fName.charAt(i);
+      }
     }
-    //loop through fontArgs and add each fallback font to the string
-    for (incr=2; incr<fontArgs.length;incr++) {
-        if (!!checkGeneric(fontArgs[incr])) {
-            //if fallback font is generic
-            fallbackString=fallbackString+","+fontArgs[incr];
+    return urlString;
+  }
+  
+  function checkIfArray(paramToCheck) {
+      // check to see if parameter is an array (true) or a string (false)
+      var testString=''+paramToCheck.constructor+'';
+      if (!!(arrayPatt.test(testString))) {
+        return true;
+      }
+      else {return false;}
+  }
+    
+  function getStringFromArray(arrayParam) {
+    //turn arrayParam into a string for font stack
+    var tempString='';
+    for (var i=0; i<arrayParam.length;i++) {
+        if (i>0) {
+            tempString=tempString+',';
         }
-        else {
-            fallbackString=fallbackString+",'"+fontArgs[incr]+"'";
+        tempString=tempString+arrayParam[i];
+    }
+    return tempString;
+  }
+
+  function loopThroughFontArray() {
+    //loop through array, check if any <link> elements need to be created
+    var flagVar;
+    for (var i=0; i<fontArray.length;i++) {
+        if (!!(/#/.test(fontArray[i]))) {
+            flagVar=fontArray[i].slice(-2).toLowerCase();
+            fontArray[i]=fontArray[i].slice(0,-2);
+                switch (flagVar) {
+                    case ('#g'):
+                        //Google Fonts
+                        checkLink(fontArray[i]);
+                        break;
+                    case ('#a'):
+                        //Adobe Edge Web Fonts
+                        fontArray[i]=fontArray[i].toLowerCase();
+                        checkScript(fontArray[i]);
+                        break;
+                }
         }
     }
   }
   
-  function checkGeneric(thisFont) {
-    //check to see if it's a generic font; if it is, return true
-    generic=false;
-    switch (thisFont.toLowerCase()) {
-        case 'serif':
-        case 'sans-serif':
-        case 'cursive':
-        case 'fantasy':
-        case 'monospace':
-            generic=true;
-            break;
-        default:
-            generic=false;
-            break;
-    }
-    return generic;
-  }
   // ------- execution starts here ------------
   
-  var newFontURL=makeURL(newFontName);
-  var linkName="FS"+elementClass;
-  var fontArgs=arguments;
-  var fallbackString='';
-  var classToChange;
-  checkFallbacks();
-  if (!checkGeneric(newFontName)) {
-    //if non generic font
-    checkLink();
-    newFontName="'"+newFontName+"'"+fallbackString;
-    document.getElementById(linkName).href=newFontURL;
+  var fontStack='';
+  var fontArray=[];
+  var arrayPatt=/\bArray/;
+  
+  if (!!(checkIfArray(fontInput))) {
+    // if input is an array
+    fontArray=fontInput;
   }
   else {
-    newFontName=newFontName+fallbackString;
-  }  
-  classToChange=document.getElementsByClassName(elementClass);
-  for (var i=0;i<classToChange.length;i++){
-    classToChange[i].style.fontFamily=newFontName;
+    // if input is a string (just one font)
+    fontArray[0]=fontInput;
+  }
+  loopThroughFontArray();
+  fontStack=getStringFromArray(fontArray);
+  var elements=document.getElementsByClassName(classInput);
+  for (var a=0;a<elements.length;a++){
+    elements[a].style.fontFamily=fontStack;
   }
 }
