@@ -14,7 +14,7 @@ In its simplest format, call fontSwitcher like this:
 
 `fontSwitcher('fontName#flag', 'class');`
 
-where `fontName` is the new font to load and `class` is the class to attach the new font to.  `flag` is used to specify whether the font is a Google font (`#g`) or an Adobe font (`#a`).  If it's neither -- such as a native font or a generic font -- then no flag is necessary.
+where `fontName` is the new font to load and `class` is the class to attach the new font to.  `flag` is used to specify whether the font is a Google font (`#g`) or an Adobe font (`#a`).  If it's neither -- such as a native font or a generic font -- then no flag is necessary.  Flags can be either upper-case or lower-case.
 
 So to load the Google font "Lobster" and apply it to the "smallTitle" class, the code would look like this:
 
@@ -39,7 +39,7 @@ Current version is v2.0.
 * Version 2.0:
   - added support for Adobe Edge Web Fonts
   - added flags to specify font source
-  - can now create `<link>` element for multiple Google/Adobe fonts at once
+  - can now create `<link>`/`<script>` elements for multiple Google/Adobe fonts with the same call
 * version 1.4:
   - added support for generic fonts
 * version 1.3:
