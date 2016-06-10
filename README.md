@@ -4,13 +4,20 @@ Dynamically add Google web fonts and apply them on the fly.  Create or add font 
 ### Usage:
 To use fontSwitcher, include this line between your `<head>` and `</head>` tags, or at the end of your `<body>` tag:
 
-`<script src="https://raw.githubusercontent.com/freginold/fontSwitcher/master/fontSwitcher.js"></script>`
+`<script src="https://raw.githubusercontent.com/freginold/fontSwitcher/master/fontSwitcher.min.js"></script>`
 
-Call fontSwitcher in this format:
+Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number, such as:
 
-`fontSwitcher('newFontName', 'elementClass'[, 'fallbackFont1', 'fallbackFont2' ...]);`
+`<script src="https://raw.githubusercontent.com/freginold/fontSwitcher/master/fontSwitcher_v2_0.min.js"></script>`
 
-where `newFontName` is the new font to load and `elementClass` is the class to attach the new font to.
+In its simplest format, call fontSwitcher like this:
+
+`fontSwitcher('fontName', 'class');`
+
+where `fontName` is the new font to load and `class` is the class to attach the new font to.
+
+
+...
 
 `fallbackFont1` (and additional fallback fonts, if any) is the font to fall back to if the primary font does not load for any reason. The fallback font can be a native or pre-loaded font, a generic font, or it can even be a Google web font (if the web font has already been loaded). If using a Google web font as a fallback font and you loaded it with fontSwitcher, make sure it has been applied to an alternative class, so that the `<link>` element is not overwritten.
 
