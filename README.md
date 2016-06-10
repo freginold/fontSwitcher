@@ -1,5 +1,5 @@
 # fontSwitcher
-Dynamically add Google web fonts and apply them on the fly.  Create or add font stacks with a single line of JavaScript.
+Dynamically add [Google Fonts](https://www.google.com/fonts) and [Adobe Edge Web Fonts](https://edgewebfonts.adobe.com/index) and apply them on the fly.  Create or add font stacks with a single line of JavaScript.
 
 ### Usage:
 To use fontSwitcher, include this line between your `<head>` and `</head>` tags, or at the end of your `<body>` tag:
@@ -12,33 +12,34 @@ Or to use a specific version, to avoid possible breakage when a new version is r
 
 In its simplest format, call fontSwitcher like this:
 
-`fontSwitcher('fontName', 'class');`
+`fontSwitcher('fontName#flag', 'class');`
 
-where `fontName` is the new font to load and `class` is the class to attach the new font to.
+where `fontName` is the new font to load and `class` is the class to attach the new font to.  `flag` is used to specify whether the font is a Google font (`#g`) or an Adobe font (`#a`).  If it's neither -- such as a native font or a generic font -- then no flag is necessary.
 
+So to load the Google font "Lobster" and apply it to the "smallTitle" class, the code would look like this:
 
-...
+`fontSwitcher('Lobster#g', 'smallTitle');`
 
-`fallbackFont1` (and additional fallback fonts, if any) is the font to fall back to if the primary font does not load for any reason. The fallback font can be a native or pre-loaded font, a generic font, or it can even be a Google web font (if the web font has already been loaded). If using a Google web font as a fallback font and you loaded it with fontSwitcher, make sure it has been applied to an alternative class, so that the `<link>` element is not overwritten.
+However, you can also create and apply a whole font stack with one command, rather than just load an individual font.  Use an array to specify fallback fonts or a font stack.  Both Google and Adobe fonts can be loaded with the same function call.  For example:
 
-Capitalization and spacing matter for Google font names.
+`fontSwitcher(['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'], 'thisClass');`
 
-You can use fontSwitcher to apply multiple Google fonts on the same page; just call the function once for each class.
-
-To attach multiple classes to an element, use the format:
-
-`class="class1 class2"`
+Capitalization and spacing matter for Google font names.  Spacing matters for Adobe fonts (as well as system and generic fonts) but capitalization does not.
 
 You can use Google's [Web Font Loader] (https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any class you specify, so you can use it for multiple fonts at the same time.
 
-fontSwitcher can also be used to apply local fonts (ie. Courier, Arial) but it may be slower than simply changing the fontFamily attribute since it will still call to Google first.  For generic fonts, no Google request is made.
+For any font that does not include a `#g` or `#a` flag, no request is made to Google or Adobe, so fontSwitcher can be used to apply native or pre-loaded fonts without any additional HTTP requests being generated.
 
-More improvements will be coming, including support for font styles and effects.
+More improvements will be coming, including support for font various styles and effects.  Adobe fonts by default include a range of weights and styles.
 
-Current version is v1.4.
+Current version is v2.0.
 
 ###Release log:
 
+* Version 2.0:
+  - added support for Adobe Edge Web Fonts
+  - added flags to specify font source
+  - can now create `<link>` element for multiple Google/Adobe fonts at once
 * version 1.4:
   - added support for generic fonts
 * version 1.3:
