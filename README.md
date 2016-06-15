@@ -4,11 +4,11 @@ Dynamically add [Google Fonts](https://www.google.com/fonts) and [Adobe Edge Web
 ### Usage:
 To use fontSwitcher, include this line between your `<head>` and `</head>` tags, or at the end of your `<body>` tag:
 
-`<script src="https://raw.githubusercontent.com/freginold/fontSwitcher/master/fontSwitcher.min.js"></script>`
+`<script src="http://freginold.github.io/fontSwitcher/fontSwitcher.min.js"></script>`
 
 Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number, such as:
 
-`<script src="https://raw.githubusercontent.com/freginold/fontSwitcher/master/fontSwitcher_v2_0.min.js"></script>`
+`<script src="http://freginold.github.io/fontSwitcher/fontSwitcher_v2_0.min.js"></script>`
 
 In its simplest format, call fontSwitcher like this:
 
