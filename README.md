@@ -32,6 +32,8 @@ For any font that does not include a `#g` or `#a` flag, no request is made to Go
 
 More improvements will be coming, including support for font various styles and effects.  Adobe fonts by default include a range of weights and styles.
 
+Before using a font (with or without fontSwitcher) always make sure its license allows for whatever type of use you need it for.
+
 Current version is v2.0.
 
 ###Release log:
