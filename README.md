@@ -6,29 +6,35 @@ To use fontSwitcher, include this line between your `<head>` and `</head>` tags,
 
 `<script src="http://freginold.github.io/fontSwitcher/fontSwitcher.min.js"></script>`
 
-Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number.  Current version is 2.0:
+Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number.  Current version is 3.0:
 
-`<script src="http://freginold.github.io/fontSwitcher/fontSwitcher_v2_0.min.js"></script>`
+`<script src="http://freginold.github.io/fontSwitcher/fontSwitcher_v3_0.min.js"></script>`
 
 In its simplest format, call fontSwitcher like this:
 
-`fontSwitcher('fontName#flag', 'class');`
+```
+fontSwitcher('fontName#flag', '#id');
+fontSwitcher('fontName#flag', '.class');`
+fontSwitcher('fontName#flag', 'tag');
+```
 
-where `fontName` is the new font to load and `class` is the class to attach the new font to.  `flag` is used to specify whether the font is a Google font (`#g`) or an Adobe font (`#a`).  If it's neither -- such as a native font or a generic font -- then no flag is necessary.  Flags can be either upper-case or lower-case.
+where `fontName` is the new font to load and `flag` is used to specify whether the font is a Google font (`#g`) or an Adobe font (`#a`).  If it's neither -- such as a native font or a generic font -- then no flag is necessary.  Flags can be either upper-case or lower-case.
+
+The second argument is used to specify whether the font should be applied to elements by ID, class, or tag name (new in v3.0).  Typical CSS format is used: IDs should be preceded by a `#`, classes should be preceded by a `.`, and tags are just the tag names (`a`, `div`, etc.).
 
 So to load the Google font "Lobster" and apply it to the "smallTitle" class, the code would look like this:
 
-`fontSwitcher('Lobster#g', 'smallTitle');`
+`fontSwitcher('Lobster#g', '.smallTitle');`
 
-However, you can also create and apply a whole font stack with one command, rather than just load an individual font.  Use an array to specify fallback fonts or a font stack.  Both Google and Adobe fonts can be loaded with the same function call.  For example:
+However, you can also create and apply an entire font stack with one command, rather than just load an individual font.  Use an array to specify fallback fonts or a font stack.  Both Google and Adobe fonts can be loaded with the same function call.  For example:
 
-`fontSwitcher(['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'], 'thisClass');`
+`fontSwitcher(['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'], '#thisID');`
 
 Capitalization and spacing matter for Google font names.  Spacing matters for Adobe fonts (as well as system and generic fonts) but capitalization does not.
 
-You can use Google's [Web Font Loader] (https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any class you specify, so you can use it for multiple fonts at the same time.
+You can use Google's [Web Font Loader] (https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any element(s) you specify, so you can apply multiple fonts quickly and easily.
 
-For any font that does not include a `#g` or `#a` flag, no request is made to Google or Adobe, so fontSwitcher can be used to apply native or pre-loaded fonts without any additional HTTP requests being generated.
+For any font that does not include a `#g` or `#a` flag, no request is made to Google or Adobe, so fontSwitcher can be used to apply native or system fonts (or Google/Adobe fonts that have already been loaded) without any additional HTTP requests being generated.
 
 More improvements will be coming, including support for font various styles and effects.  Adobe fonts by default include a range of weights and styles.
 
@@ -36,6 +42,8 @@ Before using a specific font (with or without fontSwitcher) always make sure tha
 
 ###Release log:
 
+* Version 3.0:
+  - can now apply fonts by ID and tag name, as well as class
 * Version 2.0:
   - added support for Adobe Edge Web Fonts
   - added flags to specify font source
