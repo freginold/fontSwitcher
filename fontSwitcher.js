@@ -1,4 +1,4 @@
-// fontSwitcher v2.0
+//  fontSwitcher v3.0
 
 function fontSwitcher(fontInput, classInput) {  
 
@@ -42,7 +42,7 @@ function fontSwitcher(fontInput, classInput) {
   
   function makeAdobeURL(fontName) {
     //create URL to grab Adobe font
-    //add "http:" for local development
+    // *** add "http:" for local development or use
     var newFontURL="//use.edgefonts.net/"+addReplChar(fontName, '-')+".js";
     return newFontURL;
   }
@@ -109,6 +109,7 @@ function fontSwitcher(fontInput, classInput) {
   var fontStack='';
   var fontArray=[];
   var arrayPatt=/\bArray/;
+  var elements;
   
   if (!!(checkIfArray(fontInput))) {
     // if input is an array
@@ -120,8 +121,22 @@ function fontSwitcher(fontInput, classInput) {
   }
   loopThroughFontArray();
   fontStack=getStringFromArray(fontArray);
-  var elements=document.getElementsByClassName(classInput);
-  for (var a=0;a<elements.length;a++){
-    elements[a].style.fontFamily=fontStack;
+  if (classInput[0]=='#') {
+    // if it's an ID
+    document.getElementById(classInput.slice(1)).style.fontFamily=fontStack;
+  }
+  else if (classInput[0]=='.') {
+    // if it's a class
+      elements=document.getElementsByClassName(classInput.slice(1));
+      for (var a=0;a<elements.length;a++){
+        elements[a].style.fontFamily=fontStack;
+      }
+  }
+  else {
+    // if it's not an ID or class, process as a tag name
+    elements=document.getElementsByTagName(classInput);
+    for (var a=0;a<elements.length;a++){
+      elements[a].style.fontFamily=fontStack;
+    }
   }
 }
