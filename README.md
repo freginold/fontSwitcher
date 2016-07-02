@@ -6,7 +6,7 @@ To use fontSwitcher, include this line between your `<head>` and `</head>` tags,
 
 `<script src="http://freginold.github.io/fontSwitcher/fontSwitcher.min.js"></script>`
 
-Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number, such as:
+Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number.  Current version is 2.0:
 
 `<script src="http://freginold.github.io/fontSwitcher/fontSwitcher_v2_0.min.js"></script>`
 
@@ -32,9 +32,7 @@ For any font that does not include a `#g` or `#a` flag, no request is made to Go
 
 More improvements will be coming, including support for font various styles and effects.  Adobe fonts by default include a range of weights and styles.
 
-Before using a font (with or without fontSwitcher) always make sure its license allows for whatever type of use you need it for.
-
-Current version is v2.0.
+Before using a specific font (with or without fontSwitcher) always make sure that the font's license allows the type of use you need it for.  Some fonts require attribution.
 
 ###Release log:
 
