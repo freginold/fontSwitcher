@@ -40,10 +40,12 @@ More improvements will be coming, including support for font various styles and 
 
 Before using a specific font (with or without fontSwitcher) always make sure that the font's license allows the type of use you need it for.  Some fonts require attribution.
 
+*Note:* If you're planning to use fontSwitcher locally, you'll need to add the `http:` prefix to the Adobe `src` link; otherwise it won't pull any Adobe fonts.
+
 ###Release log:
 
 * Version 3.0:
-  - can now apply fonts by ID and tag name, as well as class
+  - can now apply fonts by ID and tag name, as well as by class
 * Version 2.0:
   - added support for Adobe Edge Web Fonts
   - added flags to specify font source
