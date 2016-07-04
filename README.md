@@ -4,17 +4,21 @@ Dynamically add [Google Fonts](https://www.google.com/fonts) and [Adobe Edge Web
 ### Usage:
 To use fontSwitcher, include this line between your `<head>` and `</head>` tags, or at the end of your `<body>` tag:
 
-`<script src="http://freginold.github.io/fontSwitcher/fontSwitcher.min.js"></script>`
+```html
+<script src="http://freginold.github.io/fontSwitcher/fontSwitcher.min.js"></script>
+```
 
 Or to use a specific version, to avoid possible breakage when a new version is released, link to a specific version number.  Current version is 3.0:
 
-`<script src="http://freginold.github.io/fontSwitcher/fontSwitcher_v3_0.min.js"></script>`
-
-In its simplest format, call fontSwitcher like this:
-
+```html
+<script src="http://freginold.github.io/fontSwitcher/fontSwitcher_v3_0.min.js"></script>
 ```
+
+In its simplest format, call fontSwitcher in one of three ways:
+
+```javascript
 fontSwitcher('fontName#flag', '#id');
-fontSwitcher('fontName#flag', '.class');`
+fontSwitcher('fontName#flag', '.class');
 fontSwitcher('fontName#flag', 'tag');
 ```
 
@@ -24,15 +28,26 @@ The second argument is used to specify whether the font should be applied to ele
 
 So to load the Google font "Lobster" and apply it to the "smallTitle" class, the code would look like this:
 
-`fontSwitcher('Lobster#g', '.smallTitle');`
+```javascript
+fontSwitcher('Lobster#g', '.smallTitle');
+```
 
 However, you can also create and apply an entire font stack with one command, rather than just load an individual font.  Use an array to specify fallback fonts or a font stack.  Both Google and Adobe fonts can be loaded with the same function call.  For example:
 
-`fontSwitcher(['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'], '#thisID');`
+```javascript
+fontSwitcher(['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'], '#thisID');
+```
 
+or, for easier readability:
+```javascript
+fontSwitcher(
+  ['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'],
+  '#thisID'
+);
+```
 Capitalization and spacing matter for Google font names.  Spacing matters for Adobe fonts (as well as system and generic fonts) but capitalization does not.
 
-You can use Google's [Web Font Loader] (https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any element(s) you specify, so you can apply multiple fonts quickly and easily.
+You can use Google's [Web Font Loader] (https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any element(s) you specify, so you can apply multiple fonts (or whole font stacks) quickly and easily.
 
 For any font that does not include a `#g` or `#a` flag, no request is made to Google or Adobe, so fontSwitcher can be used to apply native or system fonts (or Google/Adobe fonts that have already been loaded) without any additional HTTP requests being generated.
 
