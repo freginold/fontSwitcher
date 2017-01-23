@@ -29,19 +29,19 @@ The second argument is used to specify whether the font should be applied to ele
 So to load the Google font "Lobster" and apply it to the "smallTitle" class, the code would look like this:
 
 ```javascript
-fontSwitcher('Lobster#g', '.smallTitle');
+fontSwitcher('Lobster#G', '.smallTitle');
 ```
 
 However, you can also create and apply an entire font stack with one command, rather than just load an individual font.  Use an array to specify fallback fonts or a font stack.  Both Google and Adobe fonts can be loaded with the same function call.  For example:
 
 ```javascript
-fontSwitcher(['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'], '#thisID');
+fontSwitcher(['Aclonica#A', 'Permanent Marker#G', 'Lucida Console', 'monospace'], '#thisID');
 ```
 
 or, for easier readability:
 ```javascript
 fontSwitcher(
-  ['Aclonica#a', 'Permanent Marker#g', 'Lucida Console', 'monospace'],
+  ['Aclonica#A', 'Permanent Marker#G', 'Lucida Console', 'monospace'],
   '#thisID'
 );
 ```
