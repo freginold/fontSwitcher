@@ -47,7 +47,7 @@ fontSwitcher(
 ```
 Capitalization and spacing matter for Google font names.  Spacing matters for Adobe fonts (as well as system and generic fonts) but capitalization does not.
 
-You can use Google's [Web Font Loader] (https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any element(s) you specify, so you can apply multiple fonts (or whole font stacks) quickly and easily.
+You can use Google's [Web Font Loader](https://github.com/typekit/webfontloader#get-started) instead, but fontSwitcher automatically applies the new font to any element(s) you specify, so you can apply multiple fonts (or whole font stacks) quickly and easily.
 
 For any font that does not include a `#g` or `#a` flag, no request is made to Google or Adobe, so fontSwitcher can be used to apply native or system fonts (or Google/Adobe fonts that have already been loaded) without any additional HTTP requests being generated.
 
@@ -57,7 +57,7 @@ Before using a specific font (with or without fontSwitcher) always make sure tha
 
 *Note:* If you're planning to use fontSwitcher locally, you'll need to add the `http:` prefix to the Adobe `src` link; otherwise it won't pull any Adobe fonts.
 
-###Release log:
+### Release log:
 
 * Version 3.0:
   - can now apply fonts by ID and tag name, as well as by class
