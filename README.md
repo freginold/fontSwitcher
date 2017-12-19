@@ -1,4 +1,7 @@
 # fontSwitcher
+
+[![GitHub release](https://img.shields.io/github/release/freginold/fontSwitcher.svg)](https://img.shields.io/github/release/freginold/fontSwitcher.svg) [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/freginold/fontSwitcher.svg)](https://github.com/freginold/fontSwitcher)
+
 Dynamically add [Google Fonts](https://www.google.com/fonts) and [Adobe Edge Web Fonts](https://edgewebfonts.adobe.com/index) and apply them on the fly.  Create or add font stacks with a single line of JavaScript.
 
 ### Usage:
